@@ -9,11 +9,25 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        black:     "var(--black)",
+        surface:   "var(--surface)",
+        "surface-2": "var(--surface-2)",
+        "surface-3": "var(--surface-3)",
+        gold:      "var(--gold)",
+        "gold-dim":"var(--gold-dim)",
+        muted:     "var(--muted)",
+        border:    "var(--border)",
+      },
+      fontFamily: {
+        display: ["'Bebas Neue'", "sans-serif"],
+        sans:    ["'Inter'", "sans-serif"],
+      },
+      maxWidth: {
+        container: "1280px",
       },
     },
   },
   plugins: [],
 };
+
 export default config;
