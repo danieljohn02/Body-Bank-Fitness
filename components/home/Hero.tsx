@@ -1,21 +1,32 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-const words = ["INVEST", "IN", "YOURSELF"];
+const headline = ["Your body is", "your greatest", "investment."];
 
 export default function Hero() {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+  const imgY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+
   return (
     <section
+      ref={ref}
       style={{
         minHeight: "100vh",
         display: "grid",
         gridTemplateColumns: "55fr 45fr",
-        backgroundColor: "var(--black)",
+        backgroundColor: "var(--cream)",
+        position: "relative",
+        overflow: "hidden",
       }}
       className="hero-grid"
     >
@@ -27,6 +38,8 @@ export default function Hero() {
           justifyContent: "center",
           padding: "120px 64px 80px 64px",
           maxWidth: 760,
+          position: "relative",
+          zIndex: 2,
         }}
         className="hero-left"
       >
@@ -37,35 +50,37 @@ export default function Hero() {
           transition={{ duration: 0.6, ease: EASE }}
           style={{
             fontSize: 11,
+            fontFamily: "var(--font-body)",
             fontWeight: 400,
-            letterSpacing: "0.2em",
+            letterSpacing: "0.22em",
             textTransform: "uppercase",
-            color: "var(--gold)",
-            marginBottom: 24,
+            color: "var(--cognac)",
+            marginBottom: 28,
           }}
         >
-          New City, New York
+          New City, New York · Since 2005
         </motion.p>
 
-        {/* Headline */}
+        {/* Headline — word by word reveal */}
         <div
-          className="font-display"
           style={{
-            fontSize: "clamp(64px, 9vw, 120px)",
-            lineHeight: 0.92,
+            fontFamily: "var(--font-display)",
+            fontWeight: 300,
+            fontSize: "clamp(52px, 7vw, 88px)",
+            lineHeight: 1.05,
+            color: "var(--espresso)",
             marginBottom: 32,
-            overflow: "hidden",
           }}
         >
-          {words.map((word, i) => (
-            <div key={word} style={{ overflow: "hidden" }}>
+          {headline.map((line, i) => (
+            <div key={i} style={{ overflow: "hidden" }}>
               <motion.span
                 style={{ display: "block" }}
-                initial={{ y: "100%" }}
+                initial={{ y: "105%" }}
                 animate={{ y: 0 }}
-                transition={{ delay: 0.2 + i * 0.15, duration: 0.7, ease: EASE }}
+                transition={{ delay: 0.15 + i * 0.18, duration: 0.8, ease: EASE }}
               >
-                {word}
+                {line}
               </motion.span>
             </div>
           ))}
@@ -77,64 +92,67 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7, duration: 0.6, ease: EASE }}
           style={{
-            fontSize: 18,
+            fontSize: 17,
+            fontFamily: "var(--font-body)",
             fontWeight: 300,
             color: "var(--muted)",
-            lineHeight: 1.65,
-            maxWidth: 420,
-            marginBottom: 40,
+            lineHeight: 1.75,
+            maxWidth: 400,
+            marginBottom: 44,
           }}
         >
-          Personal training, acupuncture, chiropractic, nutrition, and recovery
-          &mdash; all under one roof.
+          Elite personal training, recovery, and wellness — all under one roof in New City, NY.
         </motion.p>
 
-        {/* Buttons */}
+        {/* CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.85, duration: 0.6, ease: EASE }}
-          style={{ display: "flex", gap: 16, flexWrap: "wrap", marginBottom: 40 }}
+          style={{ display: "flex", gap: 16, flexWrap: "wrap", marginBottom: 48 }}
         >
-          <Link
-            href="/contact"
+          <a
+            href="tel:+18453541150"
             style={{
-              display: "inline-block",
-              backgroundColor: "var(--gold)",
-              color: "#0A0A0A",
-              fontSize: 13,
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 10,
+              backgroundColor: "var(--cognac)",
+              color: "var(--warm-white)",
+              fontSize: 14,
+              fontFamily: "var(--font-body)",
               fontWeight: 500,
-              letterSpacing: "0.12em",
-              textTransform: "uppercase",
-              padding: "14px 32px",
+              letterSpacing: "0.06em",
+              padding: "15px 32px",
               textDecoration: "none",
               transition: "opacity 0.2s ease",
             }}
             onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.opacity = "0.85")}
             onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.opacity = "1")}
           >
-            Get Started
-          </Link>
+            Call (845) 354-1150
+          </a>
           <Link
             href="/services"
             style={{
               display: "inline-block",
               backgroundColor: "transparent",
-              color: "var(--white)",
+              color: "var(--espresso)",
               fontSize: 13,
+              fontFamily: "var(--font-body)",
               fontWeight: 400,
               letterSpacing: "0.12em",
               textTransform: "uppercase",
-              padding: "14px 32px",
-              border: "1px solid rgba(255,255,255,0.3)",
+              padding: "15px 32px",
+              border: "1px solid rgba(44,36,23,0.25)",
               textDecoration: "none",
-              transition: "border-color 0.2s ease, color 0.2s ease",
+              transition: "border-color 0.2s ease",
             }}
             onMouseEnter={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--white)";
+              (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--espresso)";
             }}
             onMouseLeave={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.3)";
+              (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(44,36,23,0.25)";
             }}
           >
             View Services
@@ -147,16 +165,11 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 0.6, ease: EASE }}
         >
-          <div
-            style={{
-              height: 1,
-              backgroundColor: "var(--border)",
-              marginBottom: 20,
-            }}
-          />
+          <div style={{ height: 1, backgroundColor: "var(--border)", marginBottom: 20 }} />
           <p
             style={{
               fontSize: 12,
+              fontFamily: "var(--font-body)",
               fontWeight: 400,
               letterSpacing: "0.14em",
               textTransform: "uppercase",
@@ -168,51 +181,108 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* RIGHT — image panel */}
+      {/* RIGHT — stacked image panels */}
       <div
-        style={{ position: "relative", overflow: "hidden", minHeight: "100vh" }}
+        style={{ display: "flex", flexDirection: "column", minHeight: "100vh", overflow: "hidden" }}
         className="hero-right"
       >
-        <Image
-          src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&q=80"
-          alt="Body Bank Fitness training floor"
-          fill
-          style={{ objectFit: "cover" }}
-          priority
-          unoptimized
-        />
-        {/* Dark overlay */}
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background: "linear-gradient(to right, var(--black) 0%, transparent 40%)",
-          }}
-        />
-        {/* Bottom label */}
+        {/* Top image — gym floor (IMG_3109) */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.8, ease: EASE }}
+          style={{ position: "relative", flex: "0 0 24%", overflow: "hidden" }}
+        >
+          <Image
+            src="/IMG_3109.jpg"
+            alt="Body Bank Fitness gym floor"
+            fill
+            style={{ objectFit: "cover", objectPosition: "center 35%" }}
+            priority
+            unoptimized
+          />
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              background: "linear-gradient(to right, var(--cream) 0%, rgba(245,240,235,0.05) 22%, transparent 45%)",
+            }}
+          />
+        </motion.div>
+
+        {/* Middle image — original BBF logo */}
+        <div style={{ position: "relative", flex: "0 0 50%", overflow: "hidden" }}>
+          <Image
+            src="/bbf-logo-original.jpeg"
+            alt="Body Bank Fitness logo"
+            fill
+            style={{ objectFit: "cover", objectPosition: "center center" }}
+            unoptimized
+          />
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              background: "linear-gradient(to right, var(--cream) 0%, rgba(245,240,235,0.08) 28%, transparent 50%)",
+            }}
+          />
+        </div>
+
+        {/* Bottom image — facility detail (IMG_3108) */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.8, ease: EASE }}
+          style={{ position: "relative", flex: "1", overflow: "hidden" }}
+        >
+          <Image
+            src="/IMG_3108.jpg"
+            alt="Body Bank Fitness facility"
+            fill
+            style={{ objectFit: "cover", objectPosition: "center 40%" }}
+            unoptimized
+          />
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              background: "linear-gradient(to right, var(--cream) 0%, rgba(245,240,235,0.05) 25%, transparent 50%)",
+            }}
+          />
+        </motion.div>
+        {/* Since badge — overlays bottom-right of facility photo */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.1, duration: 0.6 }}
           style={{
             position: "absolute",
-            bottom: 40,
-            right: 40,
+            bottom: 24,
+            right: 24,
             textAlign: "right",
+            zIndex: 10,
           }}
         >
           <p
-            className="font-display"
-            style={{ fontSize: 36, color: "var(--white)", letterSpacing: "0.05em" }}
+            style={{
+              fontFamily: "var(--font-display)",
+              fontWeight: 300,
+              fontSize: 32,
+              color: "var(--warm-white)",
+              letterSpacing: "0.04em",
+              textShadow: "0 2px 12px rgba(0,0,0,0.35)",
+            }}
           >
-            SINCE 2005
+            Since 2005
           </p>
           <p
             style={{
-              fontSize: 12,
-              color: "var(--muted)",
-              letterSpacing: "0.1em",
+              fontFamily: "var(--font-body)",
+              fontSize: 11,
+              color: "rgba(253,250,247,0.7)",
+              letterSpacing: "0.14em",
               textTransform: "uppercase",
+              textShadow: "0 1px 6px rgba(0,0,0,0.3)",
             }}
           >
             Training Excellence
@@ -226,7 +296,7 @@ export default function Hero() {
             grid-template-columns: 1fr !important;
           }
           .hero-right {
-            min-height: 50vh !important;
+            min-height: 55vh !important;
           }
           .hero-left {
             padding: 140px 32px 60px !important;

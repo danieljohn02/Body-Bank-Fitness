@@ -8,8 +8,8 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 const services = [
   {
     name: "Personal Training",
-    price: null,
-    img: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=900&q=80",
+    price: "From $100 / session",
+    img: "https://storage1.snappages.site/uhj50azibi/assets/images/9534120_6100x3904_500.jpg",
     body: `Your program starts with a full physical assessment. From there, every workout is built around your specific starting point and target — whether that's weight loss, muscle building, sports performance, or recovery. Clients range from youth athletes to adults training for the first time.`,
   },
   {
@@ -27,13 +27,13 @@ const services = [
   {
     name: "Acupuncture",
     price: null,
-    img: "https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?w=900&q=80",
+    img: "https://storage1.snappages.site/uhj50azibi/assets/images/9454833_898x1192_500.png",
     body: `Our licensed acupuncturists use both traditional and modern techniques for pain management, stress reduction, and whole-body wellness. Treatments are tailored to your specific concerns and health history.`,
   },
   {
     name: "Chiropractic",
     price: "$65 per adjustment",
-    img: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=900&q=80",
+    img: "https://storage1.snappages.site/uhj50azibi/assets/images/9454433_1200x1469_500.jpg",
     body: `Our experienced chiropractor provides targeted adjustments and builds treatment plans around chronic pain, injury recovery, and postural correction.`,
   },
   {
@@ -57,7 +57,7 @@ const services = [
   {
     name: "Nutrition Consulting",
     price: "$100 per session",
-    img: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=900&q=80",
+    img: "https://storage1.snappages.site/uhj50azibi/assets/images/9453438_2500x1666_500.jpg",
     body: `Our Certified Holistic Nutritionist builds personalized nutrition plans that complement your training. No generic macro splits — actual guidance based on your lifestyle, schedule, and goals.`,
   },
   {
@@ -76,53 +76,68 @@ const services = [
 
 export default function ServicesPage() {
   return (
-    <div style={{ backgroundColor: "var(--black)", paddingTop: 72 }}>
+    <div style={{ backgroundColor: "var(--cream)", paddingTop: 72 }}>
       {/* Page header */}
       <div
         style={{
-          position: "relative",
           padding: "96px 32px 72px",
           maxWidth: 1280,
           margin: "0 auto",
-          overflow: "hidden",
+          borderBottom: "1px solid var(--border)",
         }}
       >
         <p
-          className="font-display"
           style={{
-            position: "absolute",
-            top: "50%",
-            left: 32,
-            transform: "translateY(-50%)",
-            fontSize: 240,
-            color: "var(--white)",
-            opacity: 0.04,
-            lineHeight: 1,
-            pointerEvents: "none",
-            userSelect: "none",
-            whiteSpace: "nowrap",
+            fontFamily: "var(--font-body)",
+            fontSize: 11,
+            fontWeight: 400,
+            letterSpacing: "0.2em",
+            textTransform: "uppercase",
+            color: "var(--cognac)",
+            marginBottom: 16,
           }}
         >
-          SERVICES
+          What We Offer
         </p>
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: EASE }}
-          className="font-display"
           style={{
-            fontSize: "clamp(72px, 10vw, 96px)",
-            color: "var(--white)",
-            position: "relative",
+            fontFamily: "var(--font-display)",
+            fontWeight: 300,
+            fontSize: "clamp(56px, 8vw, 96px)",
+            color: "var(--espresso)",
+            lineHeight: 1.0,
           }}
         >
-          SERVICES
+          Our Services
         </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: EASE, delay: 0.2 }}
+          style={{
+            fontFamily: "var(--font-body)",
+            fontSize: 16,
+            fontWeight: 300,
+            color: "var(--muted)",
+            marginTop: 20,
+            maxWidth: 560,
+            lineHeight: 1.75,
+          }}
+        >
+          Questions about a service? Call us directly at{" "}
+          <a href="tel:+18453541150" style={{ color: "var(--cognac)", fontWeight: 500, textDecoration: "none" }}>
+            (845) 354-1150
+          </a>
+        </motion.p>
       </div>
 
       {/* Service sections */}
       {services.map((s, i) => {
         const isEven = i % 2 === 0;
+        const bg = isEven ? "var(--cream)" : "var(--cream-2)";
         return (
           <motion.section
             key={s.name}
@@ -136,6 +151,7 @@ export default function ServicesPage() {
               display: "grid",
               gridTemplateColumns: "1fr 1fr",
               minHeight: 480,
+              backgroundColor: bg,
             }}
             className="service-section"
           >
@@ -145,8 +161,6 @@ export default function ServicesPage() {
                 order: isEven ? 0 : 1,
                 position: "relative",
                 minHeight: 400,
-                borderRight: isEven ? "1px solid var(--gold-dim)" : "none",
-                borderLeft: isEven ? "none" : "1px solid var(--gold-dim)",
               }}
             >
               <Image
@@ -160,7 +174,7 @@ export default function ServicesPage() {
                 style={{
                   position: "absolute",
                   inset: 0,
-                  backgroundColor: "rgba(10,10,10,0.35)",
+                  backgroundColor: "rgba(44,36,23,0.15)",
                 }}
               />
             </div>
@@ -177,12 +191,13 @@ export default function ServicesPage() {
               className="service-content"
             >
               <h2
-                className="font-display"
                 style={{
+                  fontFamily: "var(--font-display)",
+                  fontWeight: 300,
                   fontSize: "clamp(36px, 4vw, 52px)",
-                  color: "var(--white)",
-                  marginBottom: 20,
-                  lineHeight: 1,
+                  color: "var(--espresso)",
+                  marginBottom: 16,
+                  lineHeight: 1.05,
                 }}
               >
                 {s.name}
@@ -191,45 +206,47 @@ export default function ServicesPage() {
                 <span
                   style={{
                     display: "inline-block",
-                    border: "1px solid var(--gold)",
-                    color: "var(--gold)",
-                    fontSize: 14,
-                    fontWeight: 400,
+                    border: "1px solid var(--cognac)",
+                    color: "var(--cognac)",
+                    fontFamily: "var(--font-body)",
+                    fontSize: 13,
+                    fontWeight: 500,
                     letterSpacing: "0.06em",
                     padding: "6px 16px",
                     marginBottom: 24,
                     alignSelf: "flex-start",
                   }}
-                  className="font-display"
                 >
                   {s.price}
                 </span>
               )}
               <p
                 style={{
+                  fontFamily: "var(--font-body)",
                   fontSize: 16,
                   fontWeight: 300,
                   lineHeight: 1.85,
-                  color: "rgba(245,245,245,0.8)",
+                  color: "var(--muted)",
                   marginBottom: 32,
                 }}
               >
                 {s.body}
               </p>
               <a
-                href="/contact"
+                href="tel:+18453541150"
                 style={{
+                  fontFamily: "var(--font-body)",
                   fontSize: 13,
-                  fontWeight: 400,
-                  letterSpacing: "0.1em",
-                  color: "var(--gold)",
+                  fontWeight: 500,
+                  letterSpacing: "0.08em",
+                  color: "var(--cognac)",
                   textDecoration: "none",
                   display: "inline-flex",
                   alignItems: "center",
                   gap: 8,
                 }}
               >
-                Learn More &rarr;
+                Call to book &rarr;
               </a>
             </div>
           </motion.section>
@@ -243,8 +260,6 @@ export default function ServicesPage() {
           }
           .service-section > div {
             order: unset !important;
-            border-right: none !important;
-            border-left: none !important;
           }
           .service-content {
             padding: 40px 32px !important;

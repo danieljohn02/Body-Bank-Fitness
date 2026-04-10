@@ -9,18 +9,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        black:     "var(--black)",
-        surface:   "var(--surface)",
-        "surface-2": "var(--surface-2)",
-        "surface-3": "var(--surface-3)",
-        gold:      "var(--gold)",
-        "gold-dim":"var(--gold-dim)",
-        muted:     "var(--muted)",
-        border:    "var(--border)",
+        cream:       "var(--cream)",
+        "cream-2":   "var(--cream-2)",
+        espresso:    "var(--espresso)",
+        cognac:      "var(--cognac)",
+        "cognac-dim":"var(--cognac-dim)",
+        "warm-white":"var(--warm-white)",
+        muted:       "var(--muted)",
+        border:      "var(--border)",
       },
       fontFamily: {
-        display: ["'Bebas Neue'", "sans-serif"],
-        sans:    ["'Inter'", "sans-serif"],
+        display: ["var(--font-display)", "serif"],
+        sans:    ["var(--font-body)", "sans-serif"],
       },
       maxWidth: {
         container: "1280px",

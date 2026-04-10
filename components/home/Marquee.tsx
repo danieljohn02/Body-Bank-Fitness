@@ -1,14 +1,14 @@
 const items = [
-  "PERSONAL TRAINING",
-  "ACUPUNCTURE",
-  "CHIROPRACTIC",
-  "NUTRITION",
-  "MASSAGE THERAPY",
-  "FASCIAL STRETCH THERAPY",
-  "GOLF SIMULATION",
-  "INJURY REHABILITATION",
-  "TRIGGER POINT THERAPY",
-  "SMALL GROUP TRAINING",
+  "Personal Training",
+  "Acupuncture",
+  "Chiropractic",
+  "Nutrition",
+  "Massage Therapy",
+  "Fascial Stretch Therapy",
+  "Golf Simulation",
+  "Injury Rehabilitation",
+  "Trigger Point Therapy",
+  "Small Group Training",
 ];
 
 const text = items.join("  ·  ") + "  ·  ";
@@ -17,23 +17,22 @@ export default function Marquee() {
   return (
     <div
       style={{
-        backgroundColor: "var(--surface)",
+        backgroundColor: "var(--cream-2)",
         borderTop: "1px solid var(--border)",
         borderBottom: "1px solid var(--border)",
         overflow: "hidden",
-        padding: "18px 0",
+        padding: "16px 0",
       }}
     >
-      <div
-        className="marquee-track"
-        style={{ display: "inline-block" }}
-      >
+      <div className="marquee-track" style={{ display: "inline-block" }}>
         <span
-          className="font-display"
           style={{
-            fontSize: 14,
-            letterSpacing: "0.15em",
-            color: "var(--gold)",
+            fontFamily: "var(--font-body)",
+            fontSize: 12,
+            fontWeight: 400,
+            letterSpacing: "0.16em",
+            textTransform: "uppercase",
+            color: "var(--cognac)",
           }}
         >
           {text}

@@ -3,8 +3,10 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import Logo from "@/components/Logo";
 
 const links = [
+  { label: "Home",     href: "/"         },
   { label: "Services", href: "/services" },
   { label: "Team",     href: "/team"     },
   { label: "Pricing",  href: "/pricing"  },
@@ -35,7 +37,8 @@ export default function Navbar() {
           right: 0,
           zIndex: 100,
           borderBottom: scrolled ? "1px solid var(--border)" : "1px solid transparent",
-          backgroundColor: scrolled ? "var(--black)" : "transparent",
+          backgroundColor: scrolled ? "rgba(245,240,235,0.96)" : "transparent",
+          backdropFilter: scrolled ? "blur(12px)" : "none",
           transition: "background-color 0.3s ease, border-color 0.3s ease",
         }}
       >
@@ -51,24 +54,12 @@ export default function Navbar() {
           }}
         >
           {/* Logo */}
-          <Link
-            href="/"
-            className="font-display"
-            style={{
-              fontSize: 22,
-              letterSpacing: "0.15em",
-              color: "var(--white)",
-              textDecoration: "none",
-            }}
-          >
-            BODY BANK FITNESS
+          <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center" }}>
+            <Logo variant="dark" size="sm" />
           </Link>
 
           {/* Desktop nav */}
-          <div
-            className="hidden md:flex"
-            style={{ alignItems: "center", gap: 40 }}
-          >
+          <div className="hidden md:flex" style={{ alignItems: "center", gap: 40 }}>
             {links.map((l) => (
               <Link
                 key={l.href}
@@ -76,40 +67,38 @@ export default function Navbar() {
                 className="nav-link"
                 style={{
                   fontSize: 12,
+                  fontFamily: "var(--font-body)",
                   fontWeight: 400,
                   letterSpacing: "0.12em",
                   textTransform: "uppercase",
-                  color: "var(--white)",
+                  color: "var(--espresso)",
                   textDecoration: "none",
                 }}
               >
                 {l.label}
               </Link>
             ))}
-            <Link
-              href="/contact"
+
+            {/* Phone CTA */}
+            <a
+              href="tel:+18453541150"
               style={{
-                fontSize: 12,
-                fontWeight: 400,
-                letterSpacing: "0.12em",
-                textTransform: "uppercase",
-                color: "var(--gold)",
-                border: "1px solid var(--gold)",
-                padding: "8px 20px",
+                fontSize: 13,
+                fontFamily: "var(--font-body)",
+                fontWeight: 500,
+                letterSpacing: "0.06em",
+                color: "var(--warm-white)",
+                backgroundColor: "var(--cognac)",
+                padding: "9px 22px",
                 textDecoration: "none",
-                transition: "background-color 0.2s ease, color 0.2s ease",
+                transition: "opacity 0.2s ease",
+                whiteSpace: "nowrap",
               }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "var(--gold)";
-                (e.currentTarget as HTMLAnchorElement).style.color = "#0A0A0A";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "transparent";
-                (e.currentTarget as HTMLAnchorElement).style.color = "var(--gold)";
-              }}
+              onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.opacity = "0.85")}
+              onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.opacity = "1")}
             >
-              START TODAY
-            </Link>
+              (845) 354-1150
+            </a>
           </div>
 
           {/* Hamburger */}
@@ -134,7 +123,7 @@ export default function Navbar() {
                   display: "block",
                   width: 24,
                   height: 1,
-                  backgroundColor: "var(--white)",
+                  backgroundColor: "var(--espresso)",
                   transition: "transform 0.2s ease, opacity 0.2s ease",
                   transform:
                     open && i === 0
@@ -162,7 +151,7 @@ export default function Navbar() {
               position: "fixed",
               inset: 0,
               zIndex: 99,
-              backgroundColor: "var(--black)",
+              backgroundColor: "var(--cream)",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
@@ -180,17 +169,18 @@ export default function Navbar() {
                 <Link
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="font-display"
                   style={{
                     display: "block",
-                    fontSize: 56,
-                    color: "var(--white)",
+                    fontSize: 44,
+                    fontFamily: "var(--font-display)",
+                    fontWeight: 300,
+                    color: "var(--espresso)",
                     textDecoration: "none",
                     marginBottom: 8,
-                    letterSpacing: "0.05em",
+                    letterSpacing: "0.02em",
                   }}
                 >
-                  {l.label.toUpperCase()}
+                  {l.label}
                 </Link>
               </motion.div>
             ))}
@@ -199,25 +189,25 @@ export default function Navbar() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -30 }}
               transition={{ delay: links.length * 0.07, duration: 0.3 }}
-              style={{ marginTop: 32 }}
+              style={{ marginTop: 40 }}
             >
-              <Link
-                href="/contact"
+              <a
+                href="tel:+18453541150"
                 onClick={() => setOpen(false)}
                 style={{
                   display: "inline-block",
-                  fontSize: 14,
-                  fontWeight: 400,
-                  letterSpacing: "0.12em",
-                  textTransform: "uppercase",
-                  color: "var(--gold)",
-                  border: "1px solid var(--gold)",
-                  padding: "12px 28px",
+                  fontSize: 16,
+                  fontFamily: "var(--font-body)",
+                  fontWeight: 500,
+                  color: "var(--warm-white)",
+                  backgroundColor: "var(--cognac)",
+                  padding: "14px 32px",
                   textDecoration: "none",
+                  letterSpacing: "0.06em",
                 }}
               >
-                START TODAY
-              </Link>
+                Call (845) 354-1150
+              </a>
             </motion.div>
           </motion.div>
         )}

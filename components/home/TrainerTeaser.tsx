@@ -7,36 +7,16 @@ import Link from "next/link";
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 const trainers = [
-  {
-    name:  "Matt Wachtel",
-    title: "Founder & Elite Trainer",
-    img:   "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80",
-  },
-  {
-    name:  "Casey Weber",
-    title: "Elite Trainer",
-    img:   "https://images.unsplash.com/photo-1594381898411-846e7d193883?w=600&q=80",
-  },
-  {
-    name:  "Lisa Jankun",
-    title: "Elite Trainer & FST Specialist",
-    img:   "https://images.unsplash.com/photo-1609899537878-88d5ba429beb?w=600&q=80",
-  },
-  {
-    name:  "Stacey Vitro",
-    title: "Elite Trainer",
-    img:   "https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?w=600&q=80",
-  },
-  {
-    name:  "Joseph Carioscia",
-    title: "Elite Trainer & Golf Fitness",
-    img:   "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=80",
-  },
+  { name: "Matt Wachtel",    title: "Founder & Elite Trainer",       img: "https://storage1.snappages.site/uhj50azibi/assets/images/9454603_316x280_500.jpg" },
+  { name: "Casey Weber",     title: "Elite Trainer",                  img: "https://storage1.snappages.site/uhj50azibi/assets/images/9453228_1867x2500_500.jpg" },
+  { name: "Lisa Jankun",     title: "Elite Trainer & FST Specialist", img: "https://storage1.snappages.site/uhj50azibi/assets/images/9454483_2500x1666_500.jpg" },
+  { name: "Stacey Vitro",    title: "Elite Trainer",                  img: "https://storage1.snappages.site/uhj50azibi/assets/images/9454618_1761x2500_500.jpg" },
+  { name: "Joseph Carioscia",title: "Elite Trainer & Golf Fitness",   img: "https://storage1.snappages.site/uhj50azibi/assets/images/9454598_1743x2500_500.jpg" },
 ];
 
 export default function TrainerTeaser() {
   return (
-    <section style={{ backgroundColor: "var(--black)", padding: "128px 0" }}>
+    <section style={{ backgroundColor: "var(--cream)", padding: "128px 0" }}>
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 32px" }}>
         {/* Heading */}
         <motion.div
@@ -44,24 +24,58 @@ export default function TrainerTeaser() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7, ease: EASE }}
-          style={{ marginBottom: 64 }}
+          style={{ marginBottom: 64, display: "flex", alignItems: "flex-end", justifyContent: "space-between", flexWrap: "wrap", gap: 24 }}
         >
-          <h2
-            className="font-display"
-            style={{ fontSize: "clamp(48px, 5vw, 64px)", color: "var(--white)" }}
+          <div>
+            <p
+              style={{
+                fontFamily: "var(--font-body)",
+                fontSize: 11,
+                fontWeight: 400,
+                letterSpacing: "0.2em",
+                textTransform: "uppercase",
+                color: "var(--cognac)",
+                marginBottom: 12,
+              }}
+            >
+              The Team
+            </p>
+            <h2
+              style={{
+                fontFamily: "var(--font-display)",
+                fontWeight: 300,
+                fontSize: "clamp(44px, 5vw, 64px)",
+                color: "var(--espresso)",
+                lineHeight: 1.05,
+              }}
+            >
+              Elite professionals,
+              <br />
+              <em style={{ fontStyle: "italic" }}>not just trainers.</em>
+            </h2>
+          </div>
+          <Link
+            href="/team"
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: 13,
+              fontWeight: 400,
+              letterSpacing: "0.14em",
+              textTransform: "uppercase",
+              color: "var(--cognac)",
+              textDecoration: "none",
+              borderBottom: "1px solid rgba(139,111,78,0.4)",
+              paddingBottom: 2,
+              whiteSpace: "nowrap",
+            }}
           >
-            THE TEAM
-          </h2>
+            Meet the Full Team &rarr;
+          </Link>
         </motion.div>
 
         {/* Grid */}
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(5, 1fr)",
-            gap: 16,
-            overflowX: "auto",
-          }}
+          style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 16 }}
           className="trainer-grid"
         >
           {trainers.map((t, i) => (
@@ -80,15 +94,7 @@ export default function TrainerTeaser() {
                   position: "relative",
                   aspectRatio: "4/5",
                   overflow: "hidden",
-                  border: "1px solid var(--border)",
                   textDecoration: "none",
-                  transition: "border-color 0.3s ease",
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--gold)";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--border)";
                 }}
               >
                 <Image
@@ -104,8 +110,17 @@ export default function TrainerTeaser() {
                   style={{
                     position: "absolute",
                     inset: 0,
-                    background:
-                      "linear-gradient(to top, rgba(10,10,10,0.9) 0%, transparent 50%)",
+                    background: "linear-gradient(to top, rgba(44,36,23,0.85) 0%, transparent 55%)",
+                  }}
+                />
+                {/* Cognac hover overlay */}
+                <div
+                  className="cognac-overlay"
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    backgroundColor: "rgba(139,111,78,0.0)",
+                    transition: "background-color 0.35s ease",
                   }}
                 />
                 {/* Name overlay */}
@@ -119,11 +134,12 @@ export default function TrainerTeaser() {
                   }}
                 >
                   <p
-                    className="font-display"
                     style={{
-                      fontSize: 20,
-                      color: "var(--white)",
-                      lineHeight: 1.1,
+                      fontFamily: "var(--font-display)",
+                      fontWeight: 400,
+                      fontSize: 19,
+                      color: "var(--cream)",
+                      lineHeight: 1.15,
                       marginBottom: 4,
                     }}
                   >
@@ -131,11 +147,12 @@ export default function TrainerTeaser() {
                   </p>
                   <p
                     style={{
+                      fontFamily: "var(--font-body)",
                       fontSize: 11,
                       fontWeight: 400,
                       letterSpacing: "0.1em",
                       textTransform: "uppercase",
-                      color: "var(--gold)",
+                      color: "rgba(245,240,235,0.65)",
                     }}
                   >
                     {t.title}
@@ -145,42 +162,17 @@ export default function TrainerTeaser() {
             </motion.div>
           ))}
         </div>
-
-        {/* View all link */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          style={{ marginTop: 48, textAlign: "center" }}
-        >
-          <Link
-            href="/team"
-            style={{
-              fontSize: 13,
-              fontWeight: 400,
-              letterSpacing: "0.14em",
-              textTransform: "uppercase",
-              color: "var(--gold)",
-              textDecoration: "none",
-              borderBottom: "1px solid var(--gold-dim)",
-              paddingBottom: 2,
-            }}
-          >
-            Meet the Full Team &rarr;
-          </Link>
-        </motion.div>
       </div>
 
       <style jsx>{`
         @media (max-width: 1024px) {
           .trainer-grid {
-            grid-template-columns: repeat(3, minmax(200px, 1fr)) !important;
+            grid-template-columns: repeat(3, 1fr) !important;
           }
         }
         @media (max-width: 640px) {
           .trainer-grid {
-            grid-template-columns: repeat(2, minmax(160px, 1fr)) !important;
+            grid-template-columns: repeat(2, 1fr) !important;
           }
         }
       `}</style>

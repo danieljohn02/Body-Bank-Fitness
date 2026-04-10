@@ -7,7 +7,7 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 
 export default function Facility() {
   return (
-    <section style={{ backgroundColor: "var(--black)", padding: "128px 0 96px" }}>
+    <section style={{ backgroundColor: "var(--cream-2)", padding: "128px 0 96px" }}>
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 32px" }}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -16,11 +16,31 @@ export default function Facility() {
           transition={{ duration: 0.7, ease: EASE }}
           style={{ marginBottom: 48 }}
         >
-          <h2
-            className="font-display"
-            style={{ fontSize: "clamp(48px, 5vw, 64px)", color: "var(--white)" }}
+          <p
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: 11,
+              fontWeight: 400,
+              letterSpacing: "0.2em",
+              textTransform: "uppercase",
+              color: "var(--cognac)",
+              marginBottom: 12,
+            }}
           >
-            THE FACILITY
+            The Facility
+          </p>
+          <h2
+            style={{
+              fontFamily: "var(--font-display)",
+              fontWeight: 300,
+              fontSize: "clamp(44px, 5vw, 64px)",
+              color: "var(--espresso)",
+              lineHeight: 1.05,
+            }}
+          >
+            Private. Intentional.
+            <br />
+            <em style={{ fontStyle: "italic" }}>Designed for results.</em>
           </h2>
         </motion.div>
       </div>
@@ -31,75 +51,70 @@ export default function Facility() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}
         transition={{ duration: 0.8, ease: EASE }}
-        style={{
-          display: "grid",
-          gridTemplateColumns: "50% 25% 25%",
-          height: 500,
-        }}
+        style={{ display: "grid", gridTemplateColumns: "50% 25% 25%", height: 500 }}
         className="facility-grid"
       >
-        {/* Left large */}
         <div style={{ position: "relative", overflow: "hidden" }}>
           <Image
-            src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&q=80"
-            alt="Training floor"
+            src="/IMG_3108.jpg"
+            alt="Body Bank Fitness facility"
             fill
-            style={{ objectFit: "cover" }}
+            style={{ objectFit: "cover", objectPosition: "center 40%" }}
             unoptimized
           />
         </div>
-        {/* Right top */}
-        <div
-          style={{
-            position: "relative",
-            overflow: "hidden",
-            borderLeft: "2px solid var(--black)",
-          }}
-        >
+        <div style={{ position: "relative", overflow: "hidden", borderLeft: "3px solid var(--cream-2)" }}>
           <Image
-            src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=600&q=80"
-            alt="Gym equipment"
+            src="/IMG_3109.jpg"
+            alt="Body Bank Fitness training floor"
             fill
-            style={{ objectFit: "cover" }}
+            style={{ objectFit: "cover", objectPosition: "center 35%" }}
             unoptimized
           />
         </div>
-        {/* Right bottom */}
-        <div
-          style={{
-            position: "relative",
-            overflow: "hidden",
-            borderLeft: "2px solid var(--black)",
-            borderTop: "2px solid var(--black)",
-          }}
-        >
+        <div style={{ position: "relative", overflow: "hidden", borderLeft: "3px solid var(--cream-2)" }}>
           <Image
-            src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&q=80"
-            alt="Fitness studio"
+            src="/IMG_3113.jpg"
+            alt="Body Bank Fitness chiropractic treatment"
             fill
-            style={{ objectFit: "cover" }}
+            style={{ objectFit: "cover", objectPosition: "center 20%" }}
             unoptimized
           />
         </div>
       </motion.div>
 
       {/* Equipment list */}
-      <motion.p
+      <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.2, ease: EASE }}
         style={{
-          textAlign: "center",
-          fontSize: 12,
-          color: "var(--muted)",
-          letterSpacing: "0.1em",
-          marginTop: 32,
-          padding: "0 32px",
+          maxWidth: 1280,
+          margin: "0 auto",
+          padding: "32px 32px 0",
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "8px 24px",
+          justifyContent: "center",
         }}
       >
-        TRX &nbsp;·&nbsp; Kettlebells &nbsp;·&nbsp; Row Machine &nbsp;·&nbsp; Jacob&apos;s Ladder &nbsp;·&nbsp; Sauna &nbsp;·&nbsp; River Rock Showers &nbsp;·&nbsp; Golf Simulator &nbsp;·&nbsp; Private Massage Room
-      </motion.p>
+        {["TRX", "Kettlebells", "Row Machine", "Jacob's Ladder", "Sauna", "River Rock Showers", "Golf Simulator", "Private Massage Room"].map((item) => (
+          <span
+            key={item}
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: 11,
+              fontWeight: 400,
+              letterSpacing: "0.14em",
+              textTransform: "uppercase",
+              color: "var(--muted)",
+            }}
+          >
+            {item}
+          </span>
+        ))}
+      </motion.div>
 
       <style jsx>{`
         @media (max-width: 768px) {
@@ -110,7 +125,7 @@ export default function Facility() {
           .facility-grid > div {
             height: 280px;
             border-left: none !important;
-            border-top: 2px solid var(--black);
+            border-top: 3px solid var(--cream-2);
           }
           .facility-grid > div:first-child {
             border-top: none !important;

@@ -24,11 +24,12 @@ function Label({ children }: { children: React.ReactNode }) {
     <label
       style={{
         display: "block",
+        fontFamily: "var(--font-body)",
         fontSize: 11,
         fontWeight: 400,
         letterSpacing: "0.14em",
         textTransform: "uppercase",
-        color: "var(--gold)",
+        color: "var(--cognac)",
         marginBottom: 8,
       }}
     >
@@ -59,55 +60,90 @@ export default function ContactPage() {
   };
 
   return (
-    <div style={{ backgroundColor: "var(--black)", paddingTop: 72 }}>
+    <div style={{ backgroundColor: "var(--cream)", paddingTop: 72 }}>
       {/* Page header */}
       <div
         style={{
-          position: "relative",
           padding: "96px 32px 72px",
           maxWidth: 1280,
           margin: "0 auto",
-          overflow: "hidden",
+          borderBottom: "1px solid var(--border)",
         }}
       >
         <p
-          className="font-display"
           style={{
-            position: "absolute",
-            top: "50%",
-            left: 32,
-            transform: "translateY(-50%)",
-            fontSize: 240,
-            color: "var(--white)",
-            opacity: 0.04,
-            lineHeight: 1,
-            pointerEvents: "none",
-            userSelect: "none",
-            whiteSpace: "nowrap",
+            fontFamily: "var(--font-body)",
+            fontSize: 11,
+            fontWeight: 400,
+            letterSpacing: "0.2em",
+            textTransform: "uppercase",
+            color: "var(--cognac)",
+            marginBottom: 16,
           }}
         >
-          CONTACT
+          Get In Touch
         </p>
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: EASE }}
-          className="font-display"
           style={{
-            fontSize: "clamp(72px, 10vw, 96px)",
-            color: "var(--white)",
-            position: "relative",
+            fontFamily: "var(--font-display)",
+            fontWeight: 300,
+            fontSize: "clamp(56px, 8vw, 96px)",
+            color: "var(--espresso)",
+            lineHeight: 1.0,
           }}
         >
-          CONTACT
+          Contact Us
         </motion.h1>
+
+        {/* Phone-first CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 16,
+            marginTop: 32,
+            padding: "20px 32px",
+            backgroundColor: "var(--espresso)",
+          }}
+        >
+          <a
+            href="tel:+18453541150"
+            style={{
+              fontFamily: "var(--font-display)",
+              fontWeight: 400,
+              fontSize: 32,
+              color: "var(--cream)",
+              textDecoration: "none",
+              letterSpacing: "0.04em",
+            }}
+          >
+            (845) 354-1150
+          </a>
+          <span
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: 12,
+              color: "rgba(245,240,235,0.5)",
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+            }}
+          >
+            Call or text anytime
+          </span>
+        </motion.div>
       </div>
 
       <div
         style={{
           maxWidth: 1280,
           margin: "0 auto",
-          padding: "0 32px 128px",
+          padding: "80px 32px 128px",
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
           gap: 96,
@@ -123,10 +159,11 @@ export default function ContactPage() {
         >
           <p
             style={{
+              fontFamily: "var(--font-body)",
               fontSize: 16,
               fontWeight: 300,
-              lineHeight: 1.8,
-              color: "rgba(245,245,245,0.75)",
+              lineHeight: 1.85,
+              color: "var(--muted)",
               marginBottom: 56,
             }}
           >
@@ -135,41 +172,67 @@ export default function ContactPage() {
             trainer and program for you.
           </p>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: 36 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 40 }}>
             <div>
               <p
                 style={{
+                  fontFamily: "var(--font-body)",
                   fontSize: 11,
                   fontWeight: 400,
                   letterSpacing: "0.14em",
                   textTransform: "uppercase",
-                  color: "var(--gold)",
-                  marginBottom: 8,
+                  color: "var(--cognac)",
+                  marginBottom: 10,
                 }}
               >
                 Location
               </p>
-              <p style={{ fontSize: 15, color: "var(--white)", lineHeight: 1.7 }}>
+              <a
+                href="https://maps.google.com/?q=16+Squadron+Blvd+New+City+NY+10956"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: 15,
+                  color: "var(--espresso)",
+                  lineHeight: 1.7,
+                  textDecoration: "none",
+                  display: "block",
+                }}
+                onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "var(--cognac)")}
+                onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "var(--espresso)")}
+              >
                 16 Squadron Blvd<br />
                 New City, NY 10956
-              </p>
+              </a>
             </div>
             <div>
               <p
                 style={{
+                  fontFamily: "var(--font-body)",
                   fontSize: 11,
                   fontWeight: 400,
                   letterSpacing: "0.14em",
                   textTransform: "uppercase",
-                  color: "var(--gold)",
-                  marginBottom: 8,
+                  color: "var(--cognac)",
+                  marginBottom: 10,
                 }}
               >
                 Phone
               </p>
               <a
                 href="tel:+18453541150"
-                style={{ fontSize: 15, color: "var(--white)", textDecoration: "none" }}
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontWeight: 400,
+                  fontSize: 28,
+                  color: "var(--espresso)",
+                  textDecoration: "none",
+                  letterSpacing: "0.04em",
+                  transition: "color 0.2s ease",
+                }}
+                onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "var(--cognac)")}
+                onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "var(--espresso)")}
               >
                 (845) 354-1150
               </a>
@@ -177,17 +240,25 @@ export default function ContactPage() {
             <div>
               <p
                 style={{
+                  fontFamily: "var(--font-body)",
                   fontSize: 11,
                   fontWeight: 400,
                   letterSpacing: "0.14em",
                   textTransform: "uppercase",
-                  color: "var(--gold)",
-                  marginBottom: 8,
+                  color: "var(--cognac)",
+                  marginBottom: 10,
                 }}
               >
                 Hours
               </p>
-              <p style={{ fontSize: 15, color: "var(--white)", lineHeight: 1.7 }}>
+              <p
+                style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: 15,
+                  color: "var(--espresso)",
+                  lineHeight: 1.85,
+                }}
+              >
                 Mon – Fri &nbsp;&nbsp;4:30 AM – 8:00 PM<br />
                 Sat – Sun &nbsp;&nbsp;7:00 AM – 5:00 PM
               </p>
@@ -201,27 +272,51 @@ export default function ContactPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: EASE, delay: 0.2 }}
         >
+          <p
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: 13,
+              color: "var(--muted)",
+              marginBottom: 28,
+              lineHeight: 1.6,
+            }}
+          >
+            Prefer to write? Fill out the form below and we&apos;ll get back to you within 24 hours.
+          </p>
+
           {sent ? (
             <div
               style={{
                 padding: 48,
-                backgroundColor: "var(--surface-2)",
+                backgroundColor: "var(--warm-white)",
                 border: "1px solid var(--border)",
                 textAlign: "center",
               }}
             >
               <p
-                className="font-display"
-                style={{ fontSize: 36, color: "var(--gold)", marginBottom: 12 }}
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontWeight: 300,
+                  fontSize: 36,
+                  color: "var(--cognac)",
+                  marginBottom: 12,
+                }}
               >
-                MESSAGE SENT
+                Message sent.
               </p>
-              <p style={{ fontSize: 15, color: "var(--muted)", lineHeight: 1.7 }}>
+              <p
+                style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: 15,
+                  color: "var(--muted)",
+                  lineHeight: 1.7,
+                }}
+              >
                 We&apos;ll be in touch shortly to schedule your first session.
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 28 }}>
+            <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 24 }}>
               <div>
                 <Label>Name</Label>
                 <input
@@ -231,6 +326,7 @@ export default function ContactPage() {
                   onChange={handleChange}
                   required
                   placeholder="Your full name"
+                  style={{ fontFamily: "var(--font-body)" }}
                 />
               </div>
               <div>
@@ -242,6 +338,7 @@ export default function ContactPage() {
                   onChange={handleChange}
                   required
                   placeholder="you@example.com"
+                  style={{ fontFamily: "var(--font-body)" }}
                 />
               </div>
               <div>
@@ -252,6 +349,7 @@ export default function ContactPage() {
                   value={form.phone}
                   onChange={handleChange}
                   placeholder="(555) 000-0000"
+                  style={{ fontFamily: "var(--font-body)" }}
                 />
               </div>
               <div>
@@ -260,6 +358,7 @@ export default function ContactPage() {
                   name="service"
                   value={form.service}
                   onChange={handleChange}
+                  style={{ fontFamily: "var(--font-body)" }}
                 >
                   <option value="">Select a service</option>
                   {services.map((s) => (
@@ -275,17 +374,20 @@ export default function ContactPage() {
                   onChange={handleChange}
                   rows={5}
                   placeholder="Tell us about your goals..."
+                  style={{ fontFamily: "var(--font-body)" }}
                 />
               </div>
               <button
                 type="submit"
-                className="font-display"
                 style={{
                   width: "100%",
-                  backgroundColor: "var(--gold)",
-                  color: "#0A0A0A",
-                  fontSize: 18,
-                  letterSpacing: "0.12em",
+                  backgroundColor: "var(--espresso)",
+                  color: "var(--cream)",
+                  fontFamily: "var(--font-body)",
+                  fontSize: 14,
+                  fontWeight: 400,
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
                   padding: "18px",
                   border: "none",
                   cursor: "pointer",
@@ -294,7 +396,7 @@ export default function ContactPage() {
                 onMouseEnter={(e) => ((e.currentTarget as HTMLButtonElement).style.opacity = "0.85")}
                 onMouseLeave={(e) => ((e.currentTarget as HTMLButtonElement).style.opacity = "1")}
               >
-                SEND MESSAGE
+                Send Message
               </button>
             </form>
           )}
