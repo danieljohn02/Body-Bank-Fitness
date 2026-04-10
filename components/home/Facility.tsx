@@ -54,7 +54,8 @@ export default function Facility() {
         style={{ display: "grid", gridTemplateColumns: "50% 25% 25%", height: 500 }}
         className="facility-grid"
       >
-        <div style={{ position: "relative", overflow: "hidden" }}>
+        {/* Left — large */}
+        <div className="facility-main" style={{ position: "relative", overflow: "hidden" }}>
           <Image
             src="/IMG_3108.jpg"
             alt="Body Bank Fitness facility"
@@ -63,23 +64,27 @@ export default function Facility() {
             unoptimized
           />
         </div>
-        <div style={{ position: "relative", overflow: "hidden", borderLeft: "3px solid var(--cream-2)" }}>
-          <Image
-            src="/IMG_3109.jpg"
-            alt="Body Bank Fitness training floor"
-            fill
-            style={{ objectFit: "cover", objectPosition: "center 35%" }}
-            unoptimized
-          />
-        </div>
-        <div style={{ position: "relative", overflow: "hidden", borderLeft: "3px solid var(--cream-2)" }}>
-          <Image
-            src="/IMG_3113.jpg"
-            alt="Body Bank Fitness chiropractic treatment"
-            fill
-            style={{ objectFit: "cover", objectPosition: "center 20%" }}
-            unoptimized
-          />
+
+        {/* Right column — two stacked on desktop, stacked below left on mobile */}
+        <div className="facility-right" style={{ display: "contents" }}>
+          <div style={{ position: "relative", overflow: "hidden", borderLeft: "3px solid var(--cream-2)" }}>
+            <Image
+              src="/IMG_3109.jpg"
+              alt="Body Bank Fitness training floor"
+              fill
+              style={{ objectFit: "cover", objectPosition: "center 80%" }}
+              unoptimized
+            />
+          </div>
+          <div style={{ position: "relative", overflow: "hidden", borderLeft: "3px solid var(--cream-2)" }}>
+            <Image
+              src="/IMG_3113.jpg"
+              alt="Body Bank Fitness chiropractic treatment"
+              fill
+              style={{ objectFit: "cover", objectPosition: "center 20%" }}
+              unoptimized
+            />
+          </div>
         </div>
       </motion.div>
 
@@ -92,10 +97,10 @@ export default function Facility() {
         style={{
           maxWidth: 1280,
           margin: "0 auto",
-          padding: "32px 32px 0",
+          padding: "24px 24px 0",
           display: "flex",
           flexWrap: "wrap",
-          gap: "8px 24px",
+          gap: "8px 20px",
           justifyContent: "center",
         }}
       >
@@ -117,18 +122,43 @@ export default function Facility() {
       </motion.div>
 
       <style jsx>{`
+        /* ── Desktop ── */
+        .facility-right {
+          display: contents;
+        }
+
+        /* ── Mobile ── */
         @media (max-width: 768px) {
+          section {
+            padding: 72px 0 64px !important;
+          }
+          section > div:first-child {
+            padding: 0 20px !important;
+            margin-bottom: 32px !important;
+          }
           .facility-grid {
-            grid-template-columns: 1fr !important;
+            display: flex !important;
+            flex-direction: column !important;
             height: auto !important;
+            gap: 3px;
           }
-          .facility-grid > div {
-            height: 280px;
+          /* Left photo — tall on mobile */
+          .facility-main {
+            height: 320px !important;
             border-left: none !important;
-            border-top: 3px solid var(--cream-2);
           }
-          .facility-grid > div:first-child {
-            border-top: none !important;
+          /* Right two photos — side by side, compressed */
+          .facility-right {
+            display: flex !important;
+            flex-direction: row !important;
+            height: 180px;
+            gap: 3px;
+          }
+          .facility-right > div {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            border-left: none !important;
           }
         }
       `}</style>

@@ -197,7 +197,7 @@ export default function Hero() {
             src="/IMG_3109.jpg"
             alt="Body Bank Fitness gym floor"
             fill
-            style={{ objectFit: "cover", objectPosition: "center 35%" }}
+            style={{ objectFit: "cover", objectPosition: "center 60%" }}
             priority
             unoptimized
           />
@@ -239,7 +239,7 @@ export default function Hero() {
             src="/IMG_3108.jpg"
             alt="Body Bank Fitness facility"
             fill
-            style={{ objectFit: "cover", objectPosition: "center 40%" }}
+            style={{ objectFit: "cover", objectPosition: "center 65%" }}
             unoptimized
           />
           <div
@@ -296,10 +296,23 @@ export default function Hero() {
             grid-template-columns: 1fr !important;
           }
           .hero-right {
-            min-height: 55vh !important;
+            min-height: 60vh !important;
+            flex-direction: row !important;
+          }
+          .hero-right > div {
+            flex: 1 !important;
           }
           .hero-left {
-            padding: 140px 32px 60px !important;
+            padding: 120px 20px 48px !important;
+            max-width: 100% !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .hero-right {
+            min-height: 52vh !important;
+          }
+          .hero-left {
+            padding: 100px 20px 40px !important;
           }
         }
       `}</style>
