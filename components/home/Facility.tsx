@@ -65,8 +65,8 @@ export default function Facility() {
           />
         </div>
 
-        {/* Right column — two stacked on desktop, stacked below left on mobile */}
-        <div className="facility-right" style={{ display: "contents" }}>
+        {/* Right column — two stacked on desktop, side-by-side below on mobile */}
+        <div className="facility-right">
           <div style={{ position: "relative", overflow: "hidden", borderLeft: "3px solid var(--cream-2)" }}>
             <Image
               src="/IMG_3109.jpg"
