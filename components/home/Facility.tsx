@@ -129,29 +129,23 @@ export default function Facility() {
 
         /* ── Mobile ── */
         @media (max-width: 768px) {
-          section {
-            padding: 72px 0 64px !important;
-          }
-          section > div:first-child {
-            padding: 0 20px !important;
-            margin-bottom: 32px !important;
-          }
           .facility-grid {
             display: flex !important;
             flex-direction: column !important;
             height: auto !important;
             gap: 3px;
           }
-          /* Left photo — tall on mobile */
+          /* Left photo — full width, tall */
           .facility-main {
-            height: 320px !important;
-            border-left: none !important;
+            width: 100% !important;
+            height: 340px !important;
           }
-          /* Right two photos — side by side, compressed */
+          /* Right two — side by side at half width each, directly below */
           .facility-right {
             display: flex !important;
             flex-direction: row !important;
-            height: 180px;
+            width: 100%;
+            height: 200px;
             gap: 3px;
           }
           .facility-right > div {

@@ -296,11 +296,8 @@ export default function Hero() {
             grid-template-columns: 1fr !important;
           }
           .hero-right {
-            min-height: 60vh !important;
-            flex-direction: row !important;
-          }
-          .hero-right > div {
-            flex: 1 !important;
+            min-height: 75vh !important;
+            flex-direction: column !important;
           }
           .hero-left {
             padding: 120px 20px 48px !important;
@@ -309,7 +306,7 @@ export default function Hero() {
         }
         @media (max-width: 480px) {
           .hero-right {
-            min-height: 52vh !important;
+            min-height: 65vh !important;
           }
           .hero-left {
             padding: 100px 20px 40px !important;
