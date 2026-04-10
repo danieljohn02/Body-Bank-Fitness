@@ -120,40 +120,6 @@ export default function Facility() {
         ))}
       </motion.div>
 
-      <style jsx>{`
-        /* ── Desktop ── */
-        .facility-grid {
-          display: grid;
-          grid-template-columns: 50% 25% 25%;
-          grid-template-rows: 500px;
-          grid-template-areas: "main top-right bottom-right";
-        }
-        .facility-main        { grid-area: main; }
-        .facility-top-right   { grid-area: top-right; }
-        .facility-bottom-right { grid-area: bottom-right; }
-
-        /* ── Mobile ── */
-        @media (max-width: 768px) {
-          .facility-grid {
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: 340px 200px;
-            grid-template-areas:
-              "main main"
-              "top-right bottom-right";
-          }
-          .facility-top-right,
-          .facility-bottom-right {
-            border-left: none !important;
-          }
-          .facility-top-right {
-            border-top: 3px solid var(--cream-2);
-          }
-          .facility-bottom-right {
-            border-top: 3px solid var(--cream-2);
-            border-left: 3px solid var(--cream-2) !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }
