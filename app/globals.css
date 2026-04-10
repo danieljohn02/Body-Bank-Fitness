@@ -114,8 +114,9 @@ select option {
 
 @media (max-width: 768px) {
   .facility-grid {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 340px 200px;
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-rows: 340px 200px !important;
+    height: auto !important;
     grid-template-areas:
       "main main"
       "top-right bottom-right";

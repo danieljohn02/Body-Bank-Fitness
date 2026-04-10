@@ -52,6 +52,7 @@ export default function Facility() {
         viewport={{ once: true, margin: "-40px" }}
         transition={{ duration: 0.8, ease: EASE }}
         className="facility-grid"
+        style={{ display: "grid", gridTemplateColumns: "50% 25% 25%", height: 500 }}
       >
         {/* Left — large */}
         <div className="facility-main" style={{ position: "relative", overflow: "hidden" }}>
