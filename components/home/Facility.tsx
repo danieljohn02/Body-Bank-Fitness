@@ -51,7 +51,6 @@ export default function Facility() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}
         transition={{ duration: 0.8, ease: EASE }}
-        style={{ display: "grid", gridTemplateColumns: "50% 25% 25%", height: 500 }}
         className="facility-grid"
       >
         {/* Left — large */}
@@ -65,26 +64,26 @@ export default function Facility() {
           />
         </div>
 
-        {/* Right column — two stacked on desktop, side-by-side below on mobile */}
-        <div className="facility-right">
-          <div style={{ position: "relative", overflow: "hidden", borderLeft: "3px solid var(--cream-2)" }}>
-            <Image
-              src="/IMG_3109.jpg"
-              alt="Body Bank Fitness training floor"
-              fill
-              style={{ objectFit: "cover", objectPosition: "center 80%" }}
-              unoptimized
-            />
-          </div>
-          <div style={{ position: "relative", overflow: "hidden", borderLeft: "3px solid var(--cream-2)" }}>
-            <Image
-              src="/IMG_3113.jpg"
-              alt="Body Bank Fitness chiropractic treatment"
-              fill
-              style={{ objectFit: "cover", objectPosition: "center 20%" }}
-              unoptimized
-            />
-          </div>
+        {/* Right top */}
+        <div className="facility-top-right" style={{ position: "relative", overflow: "hidden", borderLeft: "3px solid var(--cream-2)" }}>
+          <Image
+            src="/IMG_3109.jpg"
+            alt="Body Bank Fitness training floor"
+            fill
+            style={{ objectFit: "cover", objectPosition: "center 80%" }}
+            unoptimized
+          />
+        </div>
+
+        {/* Right bottom */}
+        <div className="facility-bottom-right" style={{ position: "relative", overflow: "hidden", borderLeft: "3px solid var(--cream-2)" }}>
+          <Image
+            src="/IMG_3113.jpg"
+            alt="Body Bank Fitness chiropractic treatment"
+            fill
+            style={{ objectFit: "cover", objectPosition: "center 20%" }}
+            unoptimized
+          />
         </div>
       </motion.div>
 
@@ -123,36 +122,35 @@ export default function Facility() {
 
       <style jsx>{`
         /* ── Desktop ── */
-        .facility-right {
-          display: contents;
+        .facility-grid {
+          display: grid;
+          grid-template-columns: 50% 25% 25%;
+          grid-template-rows: 500px;
+          grid-template-areas: "main top-right bottom-right";
         }
+        .facility-main        { grid-area: main; }
+        .facility-top-right   { grid-area: top-right; }
+        .facility-bottom-right { grid-area: bottom-right; }
 
         /* ── Mobile ── */
         @media (max-width: 768px) {
           .facility-grid {
-            display: flex !important;
-            flex-direction: column !important;
-            height: auto !important;
-            gap: 3px;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 340px 200px;
+            grid-template-areas:
+              "main main"
+              "top-right bottom-right";
           }
-          /* Left photo — full width, tall */
-          .facility-main {
-            width: 100% !important;
-            height: 340px !important;
-          }
-          /* Right two — side by side at half width each, directly below */
-          .facility-right {
-            display: flex !important;
-            flex-direction: row !important;
-            width: 100%;
-            height: 200px;
-            gap: 3px;
-          }
-          .facility-right > div {
-            flex: 1;
-            position: relative;
-            overflow: hidden;
+          .facility-top-right,
+          .facility-bottom-right {
             border-left: none !important;
+          }
+          .facility-top-right {
+            border-top: 3px solid var(--cream-2);
+          }
+          .facility-bottom-right {
+            border-top: 3px solid var(--cream-2);
+            border-left: 3px solid var(--cream-2) !important;
           }
         }
       `}</style>
