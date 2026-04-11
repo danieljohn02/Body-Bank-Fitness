@@ -79,29 +79,9 @@ export default function Navbar() {
               </Link>
             ))}
 
-            {/* Phone CTA */}
-            <a
-              href="tel:+18453541150"
-              style={{
-                fontSize: 13,
-                fontFamily: "var(--font-body)",
-                fontWeight: 500,
-                letterSpacing: "0.06em",
-                color: "var(--warm-white)",
-                backgroundColor: "var(--cognac)",
-                padding: "9px 22px",
-                textDecoration: "none",
-                transition: "opacity 0.2s ease",
-                whiteSpace: "nowrap",
-              }}
-              onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.opacity = "0.85")}
-              onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.opacity = "1")}
-            >
-              (845) 354-1150
-            </a>
           </div>
 
-          {/* Hamburger */}
+          {/* Hamburger — mobile only */}
           <button
             className="md:hidden"
             onClick={() => setOpen(!open)}

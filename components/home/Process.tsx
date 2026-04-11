@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -139,27 +140,51 @@ export default function Process() {
           <p style={{ fontFamily: "var(--font-body)", fontSize: 15, color: "var(--muted)", marginBottom: 20 }}>
             Ready to get started? Step 1 is free.
           </p>
-          <a
-            href="tel:+18453541150"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              backgroundColor: "var(--espresso)",
-              color: "var(--cream)",
-              fontSize: 14,
-              fontFamily: "var(--font-body)",
-              fontWeight: 400,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              padding: "14px 36px",
-              textDecoration: "none",
-              transition: "opacity 0.2s ease",
-            }}
-            onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.opacity = "0.8")}
-            onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.opacity = "1")}
-          >
-            Call (845) 354-1150
-          </a>
+          <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
+            <a
+              href="tel:+18453541150"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                backgroundColor: "var(--espresso)",
+                color: "var(--cream)",
+                fontSize: 14,
+                fontFamily: "var(--font-body)",
+                fontWeight: 400,
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                padding: "14px 36px",
+                textDecoration: "none",
+                transition: "opacity 0.2s ease",
+              }}
+              onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.opacity = "0.8")}
+              onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.opacity = "1")}
+            >
+              Call (845) 354-1150
+            </a>
+            <Link
+              href="/contact"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                backgroundColor: "transparent",
+                color: "var(--espresso)",
+                fontSize: 14,
+                fontFamily: "var(--font-body)",
+                fontWeight: 400,
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                padding: "14px 36px",
+                textDecoration: "none",
+                border: "1px solid rgba(44,36,23,0.25)",
+                transition: "border-color 0.2s ease",
+              }}
+              onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--espresso)")}
+              onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(44,36,23,0.25)")}
+            >
+              Send Inquiry
+            </Link>
+          </div>
         </motion.div>
       </div>
 
