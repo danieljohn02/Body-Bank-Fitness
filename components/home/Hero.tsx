@@ -199,7 +199,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.8, ease: EASE }}
-          style={{ position: "relative", flex: "0 0 24%", overflow: "hidden", borderBottom: "2px solid var(--cognac)" }}
+          style={{ position: "relative", flex: "0 0 28%", overflow: "hidden", borderBottom: "2px solid var(--cognac)" }}
         >
           <Image
             src="/IMG_3109.jpg"
@@ -209,14 +209,14 @@ export default function Hero() {
             priority
             unoptimized
           />
-          {/* Left-edge gradient */}
-          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, var(--cream) 0%, rgba(245,240,235,0.05) 22%, transparent 45%)" }} />
+          {/* Left-edge blend — wider, softer */}
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, var(--cream) 0%, rgba(245,240,235,0.55) 18%, rgba(245,240,235,0.1) 40%, transparent 62%)" }} />
           {/* Dark overlay for depth */}
           <div style={{ position: "absolute", inset: 0, background: "rgba(44,36,23,0.18)" }} />
         </motion.div>
 
         {/* Middle image — trainer with client (action shot) */}
-        <div style={{ position: "relative", flex: "0 0 50%", overflow: "hidden", borderBottom: "2px solid var(--cognac)" }}>
+        <div style={{ position: "relative", flex: "0 0 42%", overflow: "hidden", borderBottom: "2px solid var(--cognac)" }}>
           <motion.div style={{ y: imgY, position: "absolute", inset: "-5% 0", height: "110%" }}>
             <Image
               src="/training-action.jpeg"
@@ -226,8 +226,8 @@ export default function Hero() {
               unoptimized
             />
           </motion.div>
-          {/* Left-edge gradient */}
-          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, var(--cream) 0%, rgba(245,240,235,0.08) 25%, transparent 48%)" }} />
+          {/* Left-edge blend — wider, softer */}
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, var(--cream) 0%, rgba(245,240,235,0.55) 18%, rgba(245,240,235,0.1) 38%, transparent 60%)" }} />
           {/* Dark overlay */}
           <div style={{ position: "absolute", inset: 0, background: "rgba(44,36,23,0.15)" }} />
         </div>
@@ -246,8 +246,8 @@ export default function Hero() {
             style={{ objectFit: "cover", objectPosition: "center 65%" }}
             unoptimized
           />
-          {/* Left-edge gradient */}
-          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, var(--cream) 0%, rgba(245,240,235,0.05) 25%, transparent 50%)" }} />
+          {/* Left-edge blend — wider, softer */}
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, var(--cream) 0%, rgba(245,240,235,0.55) 18%, rgba(245,240,235,0.1) 38%, transparent 60%)" }} />
           {/* Dark overlay */}
           <div style={{ position: "absolute", inset: 0, background: "rgba(44,36,23,0.18)" }} />
 
