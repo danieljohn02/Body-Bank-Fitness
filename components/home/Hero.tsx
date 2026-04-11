@@ -73,7 +73,7 @@ export default function Hero() {
           }}
         >
           {headline.map((line, i) => (
-            <div key={i} style={{ overflow: "hidden" }}>
+            <div key={i} style={{ overflow: "hidden", paddingBottom: "0.18em", marginBottom: "-0.18em" }}>
               <motion.span
                 style={{ display: "block" }}
                 initial={{ y: "105%" }}
@@ -200,6 +200,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.8, ease: EASE }}
           style={{ position: "relative", flex: "0 0 28%", overflow: "hidden", borderBottom: "2px solid var(--cognac)" }}
+          className="hero-top"
         >
           <Image
             src="/IMG_3109.jpg"
@@ -216,7 +217,7 @@ export default function Hero() {
         </motion.div>
 
         {/* Middle image — trainer with client (action shot) */}
-        <div style={{ position: "relative", flex: "0 0 42%", overflow: "hidden", borderBottom: "2px solid var(--cognac)" }}>
+        <div style={{ position: "relative", flex: "0 0 42%", overflow: "hidden", borderBottom: "2px solid var(--cognac)" }} className="hero-middle">
           <Image
             src="/training-action.jpeg"
             alt="Body Bank Fitness personal training"
@@ -236,6 +237,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.8, ease: EASE }}
           style={{ position: "relative", flex: "1", overflow: "hidden" }}
+          className="hero-bottom"
         >
           <Image
             src="/IMG_3108.jpg"
@@ -284,9 +286,14 @@ export default function Hero() {
             grid-template-columns: 1fr !important;
           }
           .hero-right {
-            min-height: 75vh !important;
+            height: 620px !important;
+            min-height: unset !important;
             flex-direction: column !important;
           }
+          /* Lock each panel to fixed pixel heights so browser chrome changes don't shift crops */
+          .hero-top    { flex: 0 0 148px !important; }
+          .hero-middle { flex: 0 0 310px !important; }
+          .hero-bottom { flex: 0 0 160px !important; }
           .hero-left {
             padding: 120px 20px 48px !important;
             max-width: 100% !important;
@@ -294,8 +301,11 @@ export default function Hero() {
         }
         @media (max-width: 480px) {
           .hero-right {
-            min-height: 65vh !important;
+            height: 520px !important;
           }
+          .hero-top    { flex: 0 0 124px !important; }
+          .hero-middle { flex: 0 0 260px !important; }
+          .hero-bottom { flex: 0 0 136px !important; }
           .hero-left {
             padding: 100px 20px 40px !important;
           }
