@@ -196,7 +196,7 @@ export default function ServicesPage() {
                   fontWeight: 400,
                   fontSize: "clamp(40px, 4.5vw, 58px)",
                   color: "var(--espresso)",
-                  marginBottom: s.price ? 16 : 32,
+                  marginBottom: s.price ? 16 : 64,
                   lineHeight: 1.05,
                 }}
               >
@@ -213,7 +213,7 @@ export default function ServicesPage() {
                     fontWeight: 500,
                     letterSpacing: "0.06em",
                     padding: "6px 16px",
-                    marginBottom: 24,
+                    marginBottom: 18,
                     alignSelf: "flex-start",
                   }}
                 >
