@@ -217,15 +217,13 @@ export default function Hero() {
 
         {/* Middle image — trainer with client (action shot) */}
         <div style={{ position: "relative", flex: "0 0 42%", overflow: "hidden", borderBottom: "2px solid var(--cognac)" }}>
-          <motion.div style={{ y: imgY, position: "absolute", inset: "-25% 0", height: "150%" }}>
-            <Image
-              src="/training-action.jpeg"
-              alt="Body Bank Fitness personal training"
-              fill
-              style={{ objectFit: "cover", objectPosition: "center 30%" }}
-              unoptimized
-            />
-          </motion.div>
+          <Image
+            src="/training-action.jpeg"
+            alt="Body Bank Fitness personal training"
+            fill
+            style={{ objectFit: "cover", objectPosition: "center 30%" }}
+            unoptimized
+          />
           {/* Left-edge blend — wider, softer */}
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, var(--cream) 0%, rgba(245,240,235,0.55) 18%, rgba(245,240,235,0.1) 38%, transparent 60%)" }} />
           {/* Dark overlay */}
