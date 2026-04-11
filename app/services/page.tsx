@@ -259,7 +259,7 @@ export default function ServicesPage() {
             line-height: 1.1 !important;
           }
           .service-content p {
-            font-size: 14px !important;
+            font-size: 16px !important;
             line-height: 1.55 !important;
             margin-bottom: 0 !important;
           }
