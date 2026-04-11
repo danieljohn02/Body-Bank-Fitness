@@ -58,10 +58,10 @@ export default function Hero() {
             marginBottom: 28,
           }}
         >
-          New City, New York · Since 2005
+          Elite Training · Recovery · Wellness
         </motion.p>
 
-        {/* Headline — word by word reveal */}
+        {/* Headline — tightened stagger */}
         <div
           style={{
             fontFamily: "var(--font-display)",
@@ -78,7 +78,7 @@ export default function Hero() {
                 style={{ display: "block" }}
                 initial={{ y: "105%" }}
                 animate={{ y: 0 }}
-                transition={{ delay: 0.15 + i * 0.18, duration: 0.8, ease: EASE }}
+                transition={{ delay: 0.1 + i * 0.1, duration: 0.65, ease: EASE }}
               >
                 {line}
               </motion.span>
@@ -90,7 +90,7 @@ export default function Hero() {
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7, duration: 0.6, ease: EASE }}
+          transition={{ delay: 0.45, duration: 0.6, ease: EASE }}
           style={{
             fontSize: 17,
             fontFamily: "var(--font-body)",
@@ -108,7 +108,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.85, duration: 0.6, ease: EASE }}
+          transition={{ delay: 0.6, duration: 0.6, ease: EASE }}
           style={{ display: "flex", gap: 16, flexWrap: "wrap", marginBottom: 48 }}
         >
           <a
@@ -125,12 +125,18 @@ export default function Hero() {
               letterSpacing: "0.06em",
               padding: "15px 32px",
               textDecoration: "none",
-              transition: "opacity 0.2s ease",
+              transition: "opacity 0.2s ease, transform 0.2s ease",
             }}
-            onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.opacity = "0.85")}
-            onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.opacity = "1")}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLAnchorElement).style.opacity = "0.85";
+              (e.currentTarget as HTMLAnchorElement).style.transform = "translateX(3px)";
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLAnchorElement).style.opacity = "1";
+              (e.currentTarget as HTMLAnchorElement).style.transform = "translateX(0)";
+            }}
           >
-            Call (845) 354-1150
+            Call (845) 354-1150 →
           </a>
           <Link
             href="/#services"
@@ -146,13 +152,15 @@ export default function Hero() {
               padding: "15px 32px",
               border: "1px solid rgba(44,36,23,0.25)",
               textDecoration: "none",
-              transition: "border-color 0.2s ease",
+              transition: "border-color 0.2s ease, transform 0.2s ease",
             }}
             onMouseEnter={(e) => {
               (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--espresso)";
+              (e.currentTarget as HTMLAnchorElement).style.transform = "translateX(3px)";
             }}
             onMouseLeave={(e) => {
               (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(44,36,23,0.25)";
+              (e.currentTarget as HTMLAnchorElement).style.transform = "translateX(0)";
             }}
           >
             View Services
@@ -163,7 +171,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 0.6, ease: EASE }}
+          transition={{ delay: 0.75, duration: 0.6, ease: EASE }}
         >
           <div style={{ height: 1, backgroundColor: "var(--border)", marginBottom: 20 }} />
           <p
@@ -186,12 +194,12 @@ export default function Hero() {
         style={{ display: "flex", flexDirection: "column", minHeight: "100vh", overflow: "hidden" }}
         className="hero-right"
       >
-        {/* Top image — gym floor (IMG_3109) */}
+        {/* Top image — gym floor */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.8, ease: EASE }}
-          style={{ position: "relative", flex: "0 0 24%", overflow: "hidden" }}
+          style={{ position: "relative", flex: "0 0 24%", overflow: "hidden", borderBottom: "2px solid var(--cognac)" }}
         >
           <Image
             src="/IMG_3109.jpg"
@@ -201,34 +209,30 @@ export default function Hero() {
             priority
             unoptimized
           />
-          <div
-            style={{
-              position: "absolute",
-              inset: 0,
-              background: "linear-gradient(to right, var(--cream) 0%, rgba(245,240,235,0.05) 22%, transparent 45%)",
-            }}
-          />
+          {/* Left-edge gradient */}
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, var(--cream) 0%, rgba(245,240,235,0.05) 22%, transparent 45%)" }} />
+          {/* Dark overlay for depth */}
+          <div style={{ position: "absolute", inset: 0, background: "rgba(44,36,23,0.18)" }} />
         </motion.div>
 
-        {/* Middle image — original BBF logo */}
-        <div style={{ position: "relative", flex: "0 0 50%", overflow: "hidden" }}>
-          <Image
-            src="/bbf-logo-original.jpeg"
-            alt="Body Bank Fitness logo"
-            fill
-            style={{ objectFit: "cover", objectPosition: "center center" }}
-            unoptimized
-          />
-          <div
-            style={{
-              position: "absolute",
-              inset: 0,
-              background: "linear-gradient(to right, var(--cream) 0%, rgba(245,240,235,0.08) 28%, transparent 50%)",
-            }}
-          />
+        {/* Middle image — trainer with client (action shot) */}
+        <div style={{ position: "relative", flex: "0 0 50%", overflow: "hidden", borderBottom: "2px solid var(--cognac)" }}>
+          <motion.div style={{ y: imgY, position: "absolute", inset: "-5% 0", height: "110%" }}>
+            <Image
+              src="/training-action.jpeg"
+              alt="Body Bank Fitness personal training"
+              fill
+              style={{ objectFit: "cover", objectPosition: "center 30%" }}
+              unoptimized
+            />
+          </motion.div>
+          {/* Left-edge gradient */}
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, var(--cream) 0%, rgba(245,240,235,0.08) 25%, transparent 48%)" }} />
+          {/* Dark overlay */}
+          <div style={{ position: "absolute", inset: 0, background: "rgba(44,36,23,0.15)" }} />
         </div>
 
-        {/* Bottom image — facility detail (IMG_3108) */}
+        {/* Bottom image — facility */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -242,51 +246,37 @@ export default function Hero() {
             style={{ objectFit: "cover", objectPosition: "center 65%" }}
             unoptimized
           />
-          <div
+          {/* Left-edge gradient */}
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, var(--cream) 0%, rgba(245,240,235,0.05) 25%, transparent 50%)" }} />
+          {/* Dark overlay */}
+          <div style={{ position: "absolute", inset: 0, background: "rgba(44,36,23,0.18)" }} />
+
+          {/* Pinned badge — bottom-left of bottom panel */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.9, duration: 0.6 }}
             style={{
               position: "absolute",
-              inset: 0,
-              background: "linear-gradient(to right, var(--cream) 0%, rgba(245,240,235,0.05) 25%, transparent 50%)",
-            }}
-          />
-        </motion.div>
-        {/* Since badge — overlays bottom-right of facility photo */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.1, duration: 0.6 }}
-          style={{
-            position: "absolute",
-            bottom: 24,
-            right: 24,
-            textAlign: "right",
-            zIndex: 10,
-          }}
-        >
-          <p
-            style={{
-              fontFamily: "var(--font-display)",
-              fontWeight: 300,
-              fontSize: 32,
-              color: "var(--warm-white)",
-              letterSpacing: "0.04em",
-              textShadow: "0 2px 12px rgba(0,0,0,0.35)",
+              bottom: 20,
+              left: 20,
+              zIndex: 10,
             }}
           >
-            Since 2005
-          </p>
-          <p
-            style={{
-              fontFamily: "var(--font-body)",
-              fontSize: 11,
-              color: "rgba(253,250,247,0.7)",
-              letterSpacing: "0.14em",
-              textTransform: "uppercase",
-              textShadow: "0 1px 6px rgba(0,0,0,0.3)",
-            }}
-          >
-            Training Excellence
-          </p>
+            <p
+              style={{
+                fontFamily: "var(--font-body)",
+                fontSize: 10,
+                fontWeight: 400,
+                letterSpacing: "0.22em",
+                textTransform: "uppercase",
+                color: "rgba(253,250,247,0.75)",
+                textShadow: "0 1px 6px rgba(0,0,0,0.4)",
+              }}
+            >
+              Elite Training · Recovery · Wellness
+            </p>
+          </motion.div>
         </motion.div>
       </div>
 
