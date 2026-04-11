@@ -217,7 +217,7 @@ export default function Hero() {
 
         {/* Middle image — trainer with client (action shot) */}
         <div style={{ position: "relative", flex: "0 0 42%", overflow: "hidden", borderBottom: "2px solid var(--cognac)" }}>
-          <motion.div style={{ y: imgY, position: "absolute", inset: "-5% 0", height: "110%" }}>
+          <motion.div style={{ y: imgY, position: "absolute", inset: "-25% 0", height: "150%" }}>
             <Image
               src="/training-action.jpeg"
               alt="Body Bank Fitness personal training"
