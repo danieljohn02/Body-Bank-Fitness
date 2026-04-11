@@ -252,12 +252,25 @@ export default function TeamPage() {
         @media (max-width: 768px) {
           .trainer-section {
             grid-template-columns: 1fr !important;
+            min-height: unset !important;
           }
           .trainer-section > div {
             order: unset !important;
           }
+          /* Photo: fixed square-ish height */
+          .trainer-card {
+            min-height: 280px !important;
+          }
           .trainer-content {
-            padding: 48px 32px !important;
+            padding: 28px 24px !important;
+          }
+          .trainer-content h2 {
+            font-size: 30px !important;
+            margin-bottom: 16px !important;
+          }
+          .trainer-content p {
+            font-size: 14px !important;
+            line-height: 1.55 !important;
           }
         }
       `}</style>

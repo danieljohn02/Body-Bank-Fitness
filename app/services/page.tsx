@@ -257,12 +257,26 @@ export default function ServicesPage() {
         @media (max-width: 768px) {
           .service-section {
             grid-template-columns: 1fr !important;
+            min-height: unset !important;
           }
           .service-section > div {
             order: unset !important;
           }
+          /* Image: fixed square-ish height */
+          .service-section > div:first-child {
+            min-height: 260px !important;
+          }
           .service-content {
-            padding: 40px 32px !important;
+            padding: 28px 24px !important;
+          }
+          .service-content h2 {
+            font-size: 28px !important;
+            margin-bottom: 10px !important;
+          }
+          .service-content p {
+            font-size: 14px !important;
+            line-height: 1.55 !important;
+            margin-bottom: 20px !important;
           }
         }
       `}</style>
