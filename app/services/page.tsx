@@ -193,10 +193,10 @@ export default function ServicesPage() {
               <h2
                 style={{
                   fontFamily: "var(--font-display)",
-                  fontWeight: 300,
-                  fontSize: "clamp(36px, 4vw, 52px)",
+                  fontWeight: 400,
+                  fontSize: "clamp(40px, 4.5vw, 58px)",
                   color: "var(--espresso)",
-                  marginBottom: 16,
+                  marginBottom: s.price ? 16 : 32,
                   lineHeight: 1.05,
                 }}
               >
