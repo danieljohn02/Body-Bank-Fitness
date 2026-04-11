@@ -51,7 +51,7 @@ const services = [
   {
     name: "Injury Rehabilitation",
     price: null,
-    img: "https://images.unsplash.com/photo-1609899537878-88d5ba429beb?w=900&q=80",
+    img: "/IMG_3113.jpg",
     body: `We work with clients returning from injury to rebuild strength, restore movement patterns, and progress safely back to full performance. Programs are coordinated with your existing care team when needed.`,
   },
   {
