@@ -227,27 +227,10 @@ export default function ServicesPage() {
                   fontWeight: 300,
                   lineHeight: 1.85,
                   color: "var(--muted)",
-                  marginBottom: 32,
                 }}
               >
                 {s.body}
               </p>
-              <a
-                href="tel:+18453541150"
-                style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: 13,
-                  fontWeight: 500,
-                  letterSpacing: "0.08em",
-                  color: "var(--cognac)",
-                  textDecoration: "none",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                }}
-              >
-                Call to book &rarr;
-              </a>
             </div>
           </motion.section>
         );
@@ -267,16 +250,18 @@ export default function ServicesPage() {
             min-height: 260px !important;
           }
           .service-content {
-            padding: 28px 24px !important;
+            padding: 20px 24px 24px !important;
+            justify-content: flex-start !important;
           }
           .service-content h2 {
-            font-size: 28px !important;
-            margin-bottom: 10px !important;
+            font-size: 26px !important;
+            margin-bottom: 8px !important;
+            line-height: 1.1 !important;
           }
           .service-content p {
-            font-size: 14px !important;
-            line-height: 1.55 !important;
-            margin-bottom: 20px !important;
+            font-size: 13px !important;
+            line-height: 1.20 !important;
+            margin-bottom: 0 !important;
           }
         }
       `}</style>

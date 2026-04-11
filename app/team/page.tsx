@@ -262,15 +262,17 @@ export default function TeamPage() {
             min-height: 280px !important;
           }
           .trainer-content {
-            padding: 28px 24px !important;
+            padding: 20px 24px 24px !important;
+            justify-content: flex-start !important;
           }
           .trainer-content h2 {
-            font-size: 30px !important;
-            margin-bottom: 16px !important;
+            font-size: 28px !important;
+            margin-bottom: 12px !important;
+            line-height: 1.1 !important;
           }
           .trainer-content p {
-            font-size: 14px !important;
-            line-height: 1.55 !important;
+            font-size: 13px !important;
+            line-height: 1.20 !important;
           }
         }
       `}</style>
