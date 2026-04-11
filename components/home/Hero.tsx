@@ -133,7 +133,7 @@ export default function Hero() {
             Call (845) 354-1150
           </a>
           <Link
-            href="/services"
+            href="/#services"
             style={{
               display: "inline-block",
               backgroundColor: "transparent",

@@ -20,7 +20,7 @@ const services = [
 
 export default function ServicesGrid() {
   return (
-    <section style={{ backgroundColor: "var(--cream-2)", padding: "128px 0" }}>
+    <section id="services" style={{ backgroundColor: "var(--cream-2)", padding: "128px 0" }}>
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 32px" }}>
         {/* Heading */}
         <motion.div
